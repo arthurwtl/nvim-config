@@ -29,3 +29,6 @@ opt.signcolumn = "yes"
 opt.mouse = ""
 opt.clipboard = "unnamedplus"
 -- vim.cmd.colorscheme("elflord")
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
