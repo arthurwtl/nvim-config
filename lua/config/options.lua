@@ -28,7 +28,11 @@ opt.signcolumn = "yes"
 
 opt.mouse = ""
 opt.clipboard = "unnamedplus"
--- vim.cmd.colorscheme("elflord")
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.incsearch = true
+opt.hlsearch = false
+
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+

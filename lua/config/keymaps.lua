@@ -9,6 +9,14 @@ local map = vim.keymap.set
 map("n", "-", "<CMD>Oil<CR>")
 map("n", "<S-l>", "<cmd>bnext<CR>")
 map("n", "<S-h>", "<cmd>bprevious<CR>")
+map("n", "<leader>bd", "<cmd>bdelete<CR>")
+-- Pin/unpin (voir autocmds)
+vim.keymap.set("n", "<leader>bp", function()
+  local buf = vim.api.nvim_get_current_buf()
+  vim.b[buf].pinned = not vim.b[buf].pinned
+  vim.cmd("redrawstatus")
+  vim.notify(vim.b[buf].pinned and "Buffer épinglé" or "Buffer désépinglé")
+end, { desc = "Toggle buffer pin" })
 
 -- Terminal and right split manipulation/navigation
 map("t", "<Esc>", [[<C-\><C-n>]])
@@ -55,14 +63,14 @@ map("n", "<leader>sd", "<cmd>close<CR>")
 map("n", "<leader>s>", "<C-w>>")
 map("n", "<leader>s<", "<C-w><")
 
--- Pin/unpin (voir autocmds)
 
-vim.keymap.set("n", "<leader>bp", function()
-  local buf = vim.api.nvim_get_current_buf()
-  vim.b[buf].pinned = not vim.b[buf].pinned
-  vim.cmd("redrawstatus")
-  vim.notify(vim.b[buf].pinned and "Buffer épinglé" or "Buffer désépinglé")
-end, { desc = "Toggle buffer pin" })
+-- Telescope
+-- local builtin = require('telescope.builtin')
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+-- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+-- vim.keymap.set('n', '<leader>fh', builtin.current_buffer_fuzzy_find, { desc = 'Telescope buffers' })
+
+
 
 
 
