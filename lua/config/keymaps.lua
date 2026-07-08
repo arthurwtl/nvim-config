@@ -2,7 +2,7 @@
 
 vim.g.mapleader = " "
 local map = vim.keymap.set
-
+	
 
 -- Buffer navigation
 map("n", "-", "<CMD>Oil<CR>")
@@ -29,6 +29,7 @@ end, {
 })
 
 vim.keymap.set("n", "<leader>sr", function()
+    vim.cmd("w")
 	local current_win = vim.api.nvim_get_current_win()
     if _G.term_win and vim.api.nvim_win_is_valid(_G.term_win) then
         vim.api.nvim_set_current_win(_G.term_win)
