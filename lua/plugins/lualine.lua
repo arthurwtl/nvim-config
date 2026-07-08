@@ -33,6 +33,11 @@ return {
 					mode = 2, 
 					max_length = vim.o.columns * 2 / 3,
 				},
+			}, 
+			lualine_z = {
+				function()
+					return vim.b.pinned and "Pinned" or "Not pinned"
+				end,
 			},
         },
     },

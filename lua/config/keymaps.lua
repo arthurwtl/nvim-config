@@ -2,6 +2,7 @@
 
 vim.g.mapleader = " "
 local map = vim.keymap.set
+
 	
 
 -- Buffer navigation
@@ -54,7 +55,14 @@ map("n", "<leader>sd", "<cmd>close<CR>")
 map("n", "<leader>s>", "<C-w>>")
 map("n", "<leader>s<", "<C-w><")
 
+-- Pin/unpin (voir autocmds)
 
+vim.keymap.set("n", "<leader>bp", function()
+  local buf = vim.api.nvim_get_current_buf()
+  vim.b[buf].pinned = not vim.b[buf].pinned
+  vim.cmd("redrawstatus")
+  vim.notify(vim.b[buf].pinned and "Buffer épinglé" or "Buffer désépinglé")
+end, { desc = "Toggle buffer pin" })
 
 
 
