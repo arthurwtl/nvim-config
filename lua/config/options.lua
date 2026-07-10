@@ -32,7 +32,8 @@ opt.clipboard = "unnamedplus"
 opt.incsearch = true
 opt.hlsearch = false
 
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
+opt.wrap = true
+-- opt.signcolumn = 20
+opt.linebreak = true
+opt.breakindent = true
 
