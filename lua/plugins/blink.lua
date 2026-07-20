@@ -4,5 +4,26 @@ return {
     dependencies = {
         "rafamadriz/friendly-snippets",
     },
-    opts = {},
+
+	opts = {
+		keymap = {
+		  preset = "none",
+			  ["<Tab>"] = {
+				"select_next",
+				"snippet_forward",
+				"fallback",
+			  },
+
+			  ["<S-Tab>"] = {
+				"select_prev",
+				"snippet_backward",
+				"fallback",
+			  },
+
+			  ["<CR>"] = {
+				"accept",
+				"fallback",
+			},
+		},
+	},
 }

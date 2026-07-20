@@ -2,14 +2,22 @@
 
 vim.g.mapleader = " "
 local map = vim.keymap.set
+ 
 
-	
 
 -- Buffer navigation
-map("n", "-", "<CMD>Oil<CR>")
-map("n", "<S-l>", "<cmd>bnext<CR>")
-map("n", "<S-h>", "<cmd>bprevious<CR>")
-map("n", "<leader>bd", "<cmd>bdelete<CR>")
+map("n", "-", "<CMD>Oil<CR>", {
+	desc = "Oil",
+})
+map("n", "<S-l>", "<cmd>bnext<CR>", {
+	desc = "Next buffer"
+})
+map("n", "<S-h>", "<cmd>bprevious<CR>", {
+	desc = "Previous buffer"
+})
+map("n", "<leader>bd", "<cmd>bdelete<CR>", {
+	desc = "Delete current buffer"
+})
 -- Pin/unpin (voir autocmds)
 vim.keymap.set("n", "<leader>bp", function()
   local buf = vim.api.nvim_get_current_buf()
@@ -20,11 +28,21 @@ end, { desc = "Toggle buffer pin" })
 
 -- Terminal and right split manipulation/navigation
 map("t", "<Esc>", [[<C-\><C-n>]])
-map("n", "<leader>h", "<C-w>h")
-map("n", "<leader>j", "<C-w>j")
-map("n", "<leader>k", "<C-w>k")
-map("n", "<leader>l", "<C-w>l")
-map("n", "<leader>p", "<C-w>p")
+map("n", "<leader>sh", "<C-w>h", {
+	desc = "Left split"
+})
+map("n", "<leader>sj", "<C-w>j", {
+	desc = "Down split",
+})
+map("n", "<leader>sk", "<C-w>k", {
+	desc = "Upper split"
+})
+map("n", "<leader>sl", "<C-w>l", {
+	desc = "Left split"
+})
+map("n", "<leader>sp", "<C-w>p", {
+	desc = "Previous split"
+})
 
 map("n", "<leader>st", function()
     vim.cmd("rightbelow vsplit")
@@ -34,7 +52,7 @@ map("n", "<leader>st", function()
 	_G.term_buf = vim.api.nvim_get_current_buf()
 	vim.cmd("startinsert")
 end, {
-    desc = "Open a new terminal and enter it, memorize the terminal id",
+    desc = "Open a new terminal in a split",
 })
 
 vim.keymap.set("n", "<leader>sr", function()
@@ -49,7 +67,7 @@ vim.keymap.set("n", "<leader>sr", function()
 		vim.api.nvim_set_current_win(current_win)
 		vim.cmd("stopinsert")
     end
-end, { desc = "Rerun last command" })
+end, { desc = "Run last command again" })
 
 map("n", "<leader>sn", function()
     vim.cmd("rightbelow vsplit")
@@ -59,18 +77,47 @@ end, {
     desc = "Open a new split and open oil",
 })
 
-map("n", "<leader>sd", "<cmd>close<CR>")
-map("n", "<leader>s>", "<C-w>>")
-map("n", "<leader>s<", "<C-w><")
+map("n", "<leader>sd", "<cmd>close<CR>", {
+	desc = "Close split"
+})
+map("n", "<leader>s>", "<C-w>>", {
+	desc = "Move split right"
+})
+map("n", "<leader>s<", "<C-w><", {
+	desc = "Move split left"
+})
 
 
--- Telescope
--- local builtin = require('telescope.builtin')
--- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
--- vim.keymap.set('n', '<leader>fh', builtin.current_buffer_fuzzy_find, { desc = 'Telescope buffers' })
+-- Telescope mappings are in the plugin part
 
 
+-- generics LSP mappings
+map("n", "<leader>ld", vim.lsp.buf.definition, { 
+	desc = "Go to definition" 
+})
 
+vim.keymap.set("n", "<leader>lk", vim.lsp.buf.hover, {
+	desc = "Show documentation" 
+})
 
+vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { 
+	desc = "Rename symbol" 
+})
+
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { 
+	desc = "Code action" 
+})
+
+vim.keymap.set("n", "<leader>lf", function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "Format buffer" })
+
+vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, {
+    desc = "Show diagnostic",
+})
+
+-- Rust LSP mappings
+vim.keymap.set("n", "<leader>rr", "<cmd>RustLsp runnables<CR>", {
+    desc = "Show Rust runnables",
+})
 

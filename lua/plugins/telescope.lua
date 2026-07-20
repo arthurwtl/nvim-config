@@ -17,18 +17,22 @@ return {
 			}) or vim.loop.cwd()
 		end
 
-        vim.keymap.set("n", "<leader>fb", builtin.buffers)
-        vim.keymap.set("n", "<leader>fh", builtin.current_buffer_fuzzy_find)
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, {
+			desc = "Buffers"
+		})
+        vim.keymap.set("n", "<leader>fh", builtin.current_buffer_fuzzy_find, {
+			desc = "current fuzzy"
+		})
 		vim.keymap.set("n", "<leader>ff", function()
 			builtin.find_files({
 				cwd = project_root(),
 			})
-		end)
+		end, {desc = "Files"})
 
 		vim.keymap.set("n", "<leader>fg", function()
 			builtin.live_grep({
 				cwd = project_root(),
 			})
-		end)
+		end, {desc = "Live grep"})
     end,
 }
