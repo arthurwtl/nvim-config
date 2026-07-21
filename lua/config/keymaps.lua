@@ -120,7 +120,6 @@ vim.keymap.set("n", "<leader>rr", "<cmd>RustLsp runnables<CR>", {
     desc = "Show Rust runnables",
 })
 
-
 -- Git mappings
 
 vim.keymap.set("n", "<leader>gg", "<cmd>Git<CR>", {
