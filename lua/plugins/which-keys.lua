@@ -8,7 +8,8 @@ return {
 			{ "<leader>g", group = "Git" },
 			{ "<leader>f", group = "Find" },
 			{ "<leader>b", group = "Buffer" },
-			{ "<leader>s", group = "split" },
+			{ "<leader>s", group = "Split" },
+			{ "<leader>r", group = "Rust" },
 		}
 	},
 }
