@@ -2,7 +2,6 @@
 
 vim.g.mapleader = " "
 local map = vim.keymap.set
- 
 
 
 -- Buffer navigation
@@ -119,5 +118,12 @@ vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, {
 -- Rust LSP mappings
 vim.keymap.set("n", "<leader>rr", "<cmd>RustLsp runnables<CR>", {
     desc = "Show Rust runnables",
+})
+
+
+-- Git mappings
+
+vim.keymap.set("n", "<leader>gg", "<cmd>Git<CR>", {
+    desc = "Open git fugitive menu",
 })
 
