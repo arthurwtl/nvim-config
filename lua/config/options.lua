@@ -33,7 +33,19 @@ opt.incsearch = true
 opt.hlsearch = false
 
 opt.wrap = true
--- opt.signcolumn = 20
 opt.linebreak = true
 opt.breakindent = true
+opt.textwidth = 80
+
+-- lsp 
+
+vim.lsp.config("ltex_plus", {
+  settings = {
+    ltex = {
+      language = "fr",
+    },
+  },
+})
+
+vim.lsp.enable("ltex_plus")
 

@@ -5,6 +5,7 @@ return {
             "rust_analyzer",
             "clangd",
             "pyright",
+			"ltex_plus",
         },
     },
     dependencies = {

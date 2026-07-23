@@ -6,6 +6,10 @@ return {
     },
 
 	opts = {
+		enabled = function()
+			return vim.bo.filetype ~= "text"
+		end,
+
 		keymap = {
 		  preset = "none",
 			  ["<CR>"] = {

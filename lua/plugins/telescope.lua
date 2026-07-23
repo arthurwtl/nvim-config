@@ -20,9 +20,11 @@ return {
         vim.keymap.set("n", "<leader>fb", builtin.buffers, {
 			desc = "Buffers"
 		})
+
         vim.keymap.set("n", "<leader>fh", builtin.current_buffer_fuzzy_find, {
 			desc = "current fuzzy"
 		})
+
 		vim.keymap.set("n", "<leader>ff", function()
 			builtin.find_files({
 				cwd = project_root(),
@@ -34,5 +36,24 @@ return {
 				cwd = project_root(),
 			})
 		end, {desc = "Live grep"})
+
+		-- LSP pikers
+		-- vim.keymap.set("n", "<leader>fw", function()
+		-- 	builtin.lsp_dynamic_workspace_symbols({
+		-- 		cwd = project_root(),
+		-- 	})
+		-- end, {desc = "LSP symboles in workspace"})
+
+		vim.keymap.set("n", "<leader>fs", function()
+			builtin.lsp_document_symbols({
+				cwd = project_root(),
+			})
+		end, {desc = "LSP symboles"})
+
+		vim.keymap.set("n", "<leader>fr", function()
+			builtin.lsp_references({
+				cwd = project_root(),
+			})
+		end, {desc = "References"})
     end,
 }
